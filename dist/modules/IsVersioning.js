@@ -12,5 +12,5 @@ var _lodash = require('lodash');
  * @returns {boolean}
  */
 exports.default = function () {
-  return Elixir.inProduction && (0, _lodash.get)(Elixir.config, 'versioning.enabled', false);
+  return true || Elixir.inProduction && (0, _lodash.get)(Elixir.config, 'versioning.enabled', false);
 };

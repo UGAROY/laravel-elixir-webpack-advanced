@@ -36,7 +36,7 @@ const webpack_config = {
         }),
         new ProgressBarPlugin(),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin(`../${filenamePattern}.css`, {allChunks: true}),
+        new ExtractTextPlugin(`${filenamePattern}.css`, {allChunks: true}),
         new BowerWebpackPlugin({
             excludes: [/.*\.less$/, /^.+\/[^\/]+\/?\*$/]
         })

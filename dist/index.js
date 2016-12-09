@@ -42,20 +42,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var taskName = 'webpack';
 
 /**
- * Built-in modules
+ * Webpack spec
  */
 
-var webpackEndCallback = void 0;
 
 /**
- * Webpack spec
+ * Built-in modules
  */
 Elixir.extend(taskName, function (src, options, globalVars, callback) {
     var paths = (0, _GulpPaths2.default)(src),
         globalConfig = Object.assign({}, _Config2.default),
         entry = (0, _EntryPaths2.default)(src);
-
-    webpackEndCallback = callback;
 
     /**
      * In next major release this will be removed
@@ -86,7 +83,6 @@ Elixir.extend(taskName, function (src, options, globalVars, callback) {
             if (err) {
                 return;
             }
-            webpackEndCallback();
             _gulpUtil2.default.log(stats.toString(options.stats));
         });
     }, paths);
