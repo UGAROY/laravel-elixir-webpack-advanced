@@ -7,4 +7,4 @@ import {get} from 'lodash';
  *
  * @returns {boolean}
  */
-export default () => Elixir.inProduction && get(Elixir.config, 'versioning.enabled', false);
+export default () => true || Elixir.inProduction && get(Elixir.config, 'versioning.enabled', false);
