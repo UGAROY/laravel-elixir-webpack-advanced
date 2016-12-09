@@ -20,14 +20,17 @@ import webpackConfig from './Config';
  * Helpers
  */
 const taskName = 'webpack';
+let webpackEndCallback;
 
 /**
  * Webpack spec
  */
-Elixir.extend(taskName, function (src, options, globalVars) {
+Elixir.extend(taskName, function (src, options, globalVars, callback) {
     let paths = GulpPaths(src),
         globalConfig = Object.assign({}, webpackConfig),
         entry = prepareEntry(src);
+
+    webpackEndCallback = callback;
 
     /**
      * In next major release this will be removed
@@ -63,7 +66,7 @@ Elixir.extend(taskName, function (src, options, globalVars) {
             if (err) {
                 return;
             }
-
+            webpackEndCallback();
             gutils.log(stats.toString(options.stats));
     });
     }, paths);
