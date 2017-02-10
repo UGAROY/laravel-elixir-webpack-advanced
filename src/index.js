@@ -24,7 +24,7 @@ const taskName = 'webpack';
 /**
  * Webpack spec
  */
-Elixir.extend(taskName, function (src, options, globalVars, callback) {
+Elixir.extend(taskName, function (src, options, globalVars) {
     let paths = GulpPaths(src),
         globalConfig = Object.assign({}, webpackConfig),
         entry = prepareEntry(src);

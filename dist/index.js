@@ -49,7 +49,7 @@ var taskName = 'webpack';
 /**
  * Built-in modules
  */
-Elixir.extend(taskName, function (src, options, globalVars, callback) {
+Elixir.extend(taskName, function (src, options, globalVars) {
     var paths = (0, _GulpPaths2.default)(src),
         globalConfig = Object.assign({}, _Config2.default),
         entry = (0, _EntryPaths2.default)(src);
