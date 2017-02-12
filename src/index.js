@@ -24,7 +24,7 @@ const taskName = 'webpack';
 /**
  * Webpack spec
  */
-Elixir.extend(taskName, function (src, options, globalVars) {
+Elixir.extend(taskName, function (src, options, commonChunks, globalVars) {
     let paths = GulpPaths(src),
         globalConfig = Object.assign({}, webpackConfig),
         entry = prepareEntry(src);
@@ -35,6 +35,11 @@ Elixir.extend(taskName, function (src, options, globalVars) {
      */
     if (isPlainObject(globalVars)) {
         globalConfig.plugins.push(new webpack.ProvidePlugin(globalVars));
+    }
+
+    // add Common Chunks
+    if (isPlainObject(commonChunks)) {
+        globalConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin(commonChunks));
     }
 
     // Merge options

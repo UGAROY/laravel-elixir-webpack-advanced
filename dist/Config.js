@@ -64,10 +64,7 @@ var filenamePattern = (0, _IsVersioning2.default)() ? '[name]-[hash]' : '[name]'
 var webpack_config = {
     debug: !Elixir.inProduction,
     context: _path2.default.resolve(_appRootPath2.default.path, Elixir.config.get('assets.js.folder')),
-    plugins: [new _webpack2.default.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        filename: filenamePattern + '.js'
-    }), new _webpack2.default.DefinePlugin({
+    plugins: [new _webpack2.default.DefinePlugin({
         'process.env': {
             'NODE_ENV': JSON.stringify(Elixir.inProduction ? 'production' : 'development')
         }

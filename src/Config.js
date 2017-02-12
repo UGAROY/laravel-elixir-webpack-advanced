@@ -25,10 +25,6 @@ const webpack_config = {
     debug: !Elixir.inProduction,
     context: path.resolve(root.path, Elixir.config.get('assets.js.folder')),
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: `${filenamePattern}.js`
-        }),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify(Elixir.inProduction ? 'production' : 'development')

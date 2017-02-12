@@ -49,7 +49,7 @@ var taskName = 'webpack';
 /**
  * Built-in modules
  */
-Elixir.extend(taskName, function (src, options, globalVars) {
+Elixir.extend(taskName, function (src, options, commonChunks, globalVars) {
     var paths = (0, _GulpPaths2.default)(src),
         globalConfig = Object.assign({}, _Config2.default),
         entry = (0, _EntryPaths2.default)(src);
@@ -60,6 +60,11 @@ Elixir.extend(taskName, function (src, options, globalVars) {
      */
     if ((0, _lodash.isPlainObject)(globalVars)) {
         globalConfig.plugins.push(new _webpack2.default.ProvidePlugin(globalVars));
+    }
+
+    // add Common Chunks
+    if ((0, _lodash.isPlainObject)(commonChunks)) {
+        globalConfig.plugins.push(new _webpack2.default.optimize.CommonsChunkPlugin(commonChunks));
     }
 
     // Merge options
