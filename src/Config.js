@@ -18,7 +18,7 @@ import ManifestRevisionPlugin from './modules/RevManifestPlugin';
 
 const
     filenamePattern = isVersion()
-        ? '[name]-[hash]'
+        ? '[name]-[chunkhash]'
         : '[name]';
 
 const webpack_config = {
@@ -32,7 +32,7 @@ const webpack_config = {
         }),
         new ProgressBarPlugin(),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin(`${filenamePattern}.css`, {allChunks: true}),
+        new ExtractTextPlugin(`[name]-[contenthash].css`, {allChunks: true}),
         new BowerWebpackPlugin({
             excludes: [/.*\.less$/, /^.+\/[^\/]+\/?\*$/]
         })

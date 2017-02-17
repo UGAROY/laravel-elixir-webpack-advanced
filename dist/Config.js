@@ -56,7 +56,7 @@ var _RevManifestPlugin2 = _interopRequireDefault(_RevManifestPlugin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var filenamePattern = (0, _IsVersioning2.default)() ? '[name]-[hash]' : '[name]';
+var filenamePattern = (0, _IsVersioning2.default)() ? '[name]-[chunkhash]' : '[name]';
 
 // Built-in modules
 
@@ -68,7 +68,7 @@ var webpack_config = {
         'process.env': {
             'NODE_ENV': JSON.stringify(Elixir.inProduction ? 'production' : 'development')
         }
-    }), new _progressBarWebpackPlugin2.default(), new _webpack2.default.NoErrorsPlugin(), new _extractTextWebpackPlugin2.default(filenamePattern + '.css', { allChunks: true }), new _bowerWebpackPlugin2.default({
+    }), new _progressBarWebpackPlugin2.default(), new _webpack2.default.NoErrorsPlugin(), new _extractTextWebpackPlugin2.default('[name]-[contenthash].css', { allChunks: true }), new _bowerWebpackPlugin2.default({
         excludes: [/.*\.less$/, /^.+\/[^\/]+\/?\*$/]
     })],
     resolve: {
